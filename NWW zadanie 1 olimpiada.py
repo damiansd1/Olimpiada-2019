@@ -13,28 +13,52 @@
                 cz+=1
             print ("good")
     return Części"""
-#M = input()
-pr = 1
-x=1
-print ("good")
-Check1 = False
-Check2 = False
-Części1 = []
-pr=12
-Części1 = NWW(pr+1)
-print (Części1[0])
-print ("good")
-#while Check1==True:
- #   if M%pr==0:
-  #      if M%(pr+1)==0:
-  for i in range(1,(a*b)+1):
-      if i/a == int(i/b):
-          return i
+def NWW (a,b):
+    for i in range(b,(a*b)+1):
+        if (i/a) == int(i/a):
+            if (i/b)==int(i/b):
+                return i
+testli= []                
+z = input()
+z = int(z)
+for m in range(z):
+    testli.append(input())
+for b in range(len(testli)):
+    M = int(testli[b])
+    pr = 0
+    Check1 = True
+    Check2 = True
+    lista = []
+    while Check1==True:
+        lista = []
+        Check2 = True
+        pr+=1
+        x = 0
+        kon = pr
+        lista.append(pr+x)
+        if pr > M:
+            print("NIE")
+            Check1 = False
+            Check2 = False
+            lista = []
+            break
+        if M%pr == 0:
+            while Check2:
+                x+=1    
+                lista.append(pr+x)
+                if M%(pr+x)==0:
+                    if M==NWW(kon,pr+x):
+                        print (NWW(kon, pr+x))
+                        Check1 = False
+                        Check2 = False
+                    else:
+                        kon=NWW(kon,pr+x)
                     
-                
-                
 
+                else:
+                     Check2 = False
 
+    print(lista[0],lista[-1])
             
                 
                 
