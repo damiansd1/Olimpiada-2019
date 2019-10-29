@@ -3,22 +3,29 @@ from time import time
 from math import sqrt
 def NWW (a,b):
     i = 0
-    if b%a == 0:
-           i = b*a
-    else:
-        z = b-a
-        x = int(a/2)+1
-        for r in range(x,2,-z):
-           if a%r == 0:
-               if b%r == 0:
-                  i = r
+    x = 1
+    if b%a != 0:
+        x = b%a
+        if a%x!=0:
+            y = x
+            x = a%y
+            while a%x!=0:
+                z = x
+                x = y%z
+                if a%x==0:
+                    break
+                y = x
+                x = z%y
+    i = (b*a)/x
+    if i==0:
+        print("ibłąd")
     return i
 testli= []                
 z = input()
 z = int(z)
 for m in range(z):
-    #testli.append(randint(1,1000000000))
-    testli.append(input())
+    testli.append(randint(1,10**14))
+    #testli.append(input())
 t1=time()
 print (testli)
 for b in range(len(testli)):
@@ -36,6 +43,7 @@ for b in range(len(testli)):
     else: skr=M/2        
     while Check1==True:
         lista = []
+        v=0
         Check2 = True
         pr+=1
         x = 0
@@ -52,12 +60,15 @@ for b in range(len(testli)):
                 x+=1    
                 lista.append(pr+x)
                 if M%(pr+x)==0:
-                  #  if pr*(pr+x)< or M==NWW(kon,pr+x):
-                   #     print (NWW(kon, pr+x))
-                   #     Check1 = False
-                        Check2 = False
-                    else:
-                        kon=NWW(kon,pr+x)
+                        if (pr+x)>kon:
+                            v = NWW(kon, pr+x)
+                        else:
+                            v = NWW(pr+x, kon)
+                        if M==v:
+                            Check1 = False
+                            Check2 = False
+                        else:
+                            kon=v
                 else:
                      Check2 = False
     if len(lista) != 0:
