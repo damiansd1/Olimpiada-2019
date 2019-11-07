@@ -1,5 +1,4 @@
 from random import randint
-#from time import time
 from math import sqrt
 def NWW (a,b):
     i = 0
@@ -17,11 +16,11 @@ def NWW (a,b):
                 y = x
                 x = z%y
     i = (b*a)/x
+    return i
 testli= []                
 z = input()
 z = int(z)
 for m in range(z):
-    #testli.append(randint(1,10**14))
     testli.append(input())
 for b in range(len(testli)):
     M = int(testli[b])
@@ -35,10 +34,10 @@ for b in range(len(testli)):
         skr = sqrt(10**len(Z))
         if skr != int(skr):
             skr = sqrt((10**len(Z))*10)
-    else: skr=M/2        
+    else: skr=M/2
     while Check1==True:
         lista = []
-        v=0
+        v = 0
         Check2 = True
         pr+=1
         x = 0
@@ -55,9 +54,7 @@ for b in range(len(testli)):
                 x+=1    
                 lista.append(pr+x)
                 if M%(pr+x)==0:
-                    if kon == 0:
-                        print()
-                        if (pr+x)>int(kon):
+                        if (pr+x)>kon:
                             v = NWW(kon, pr+x)
                         else:
                             v = NWW(pr+x, kon)
@@ -70,4 +67,3 @@ for b in range(len(testli)):
                      Check2 = False
     if len(lista) > 1:
         print(lista[0],lista[-1])
-#print(time()-t1)
